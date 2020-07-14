@@ -4,11 +4,14 @@ RUN apt-get update && \
     apt-get install -y git gcc cmake software-properties-common build-essential python-dev libopenblas-dev libeigen3-dev sqlite3 libsqlite3-dev libboost-dev libboost-system-dev libboost-thread-dev libboost-serialization-dev libboost-iostreams-dev libboost-python-dev libboost-regex-dev libcairo2 libcairo2-dev libjpeg-dev libgif-dev && \
     pip install numpy==1.17.4
 
+COPY gh2855.patch /tmp/gh2855.patch
+
 RUN export RDBASE=/usr/local/rdkit && \
     export LD_LIBRARY_PATH=$RDBASE/lib:$LD_LIBRARY_PATH && \
     export PYTHONPATH=$RDBASE:$PYTHONPATH && \
     git clone -b Release_2019_03_4 https://github.com/rdkit/rdkit.git $RDBASE && \
     cd $RDBASE && \
+    git apply /tmp/gh2855.patch && \
     mkdir build && \
     cd build && \
     cmake .. && \
