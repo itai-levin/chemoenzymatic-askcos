@@ -12,7 +12,7 @@ RUN export RDBASE=/usr/local/rdkit && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make -j8 && \
+    make && \
     make install
 
 FROM python:3.5-stretch
