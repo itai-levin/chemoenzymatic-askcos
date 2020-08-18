@@ -1,0 +1,41 @@
+name: base
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - amqp=2.6.1
+  - celery=4.4
+  - cython=0.29.21
+  - django=2.2.14
+  - django-extensions=2.2.9
+  - djangorestframework=3.11.1
+  - fonts-conda-forge=1
+  - gevent=1.4.0
+  - h5py=2.10.0
+  - hdbscan=0.8.23
+  - keras=2.2.4
+  - matplotlib=3.3.0
+  - mysqlclient=1.4.6
+  - networkx=2.4
+  - numpy=1.19.1
+  - pandas=1.1.0
+  - pango=1.42.4
+  - pillow=7.2.0
+  - pip=20.2.2
+  - pycairo=1.19.1
+  - pymongo=3.10.1
+  - pyyaml=5.3.1
+  - rdkit=2020.03.4
+  - redis-py=3.5.3
+  - scipy=1.5.2
+  - scikit-learn=0.23.1
+  - tensorflow=2.0.0
+  - tensorflow-estimator=2.0.0
+  - tqdm=4.48.2
+  - uwsgi=2.0.18
+  - cairosvg=2.4.2
+  - pip:
+      - django-registration==3.0.1
+      - drf-jwt==1.14.0
+      - rdchiral==1.0.0

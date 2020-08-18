@@ -1,28 +1,24 @@
-FROM python:3.7-buster as build
+FROM continuumio/miniconda3:4.8.2-alpine
 
-RUN apt-get update && \
-    apt-get install -y git gcc cmake software-properties-common build-essential python-dev libopenblas-dev libeigen3-dev sqlite3 libsqlite3-dev libboost-all-dev libcairo2 libcairo2-dev libjpeg-dev libgif-dev && \
-    pip install numpy==1.19.0
+USER root
 
-COPY gh2855.patch /tmp/gh2855.patch
+RUN apk update && apk upgrade && apk add bash
 
-RUN export RDBASE=/tmp/rdkit && \
-    git clone -b Release_2020_03_4 https://github.com/rdkit/rdkit.git $RDBASE && \
-    cd $RDBASE && \
-    git apply /tmp/gh2855.patch && \
-    mkdir build && \
-    cd build && \
-    cmake -DRDK_INSTALL_INTREE=OFF -DCMAKE_INSTALL_PREFIX=/usr/local/rdkit .. && \
-    make && \
-    make install
+COPY environment.yml /tmp/environment.yml
 
-FROM python:3.7-buster
+RUN /usr/sbin/addgroup -S askcos && \
+    /usr/sbin/adduser -D -u 1000 askcos -G askcos && \
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/askcos/.profile && \
+    echo "conda activate base" >> /home/askcos/.profile
 
-RUN apt-get update && \
-    apt-get install -y python python-pip libboost-thread-dev libboost-python-dev libboost-iostreams-dev && \
-    pip install numpy==1.19.0
+RUN /opt/conda/bin/conda env update --file /tmp/environment.yml && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    /opt/conda/bin/conda clean -afy
 
-COPY --from=build /usr/local/rdkit /usr/local/rdkit
+# Manually fix https://github.com/rdkit/rdkit/issues/2854
+RUN sed -i 's/latin1/utf-8/g' /opt/conda/lib/python3.7/site-packages/rdkit/Chem/Draw/cairoCanvas.py
 
-ENV LD_LIBRARY_PATH=/usr/local/rdkit/lib:$LD_LIBRARY_PATH
-ENV PYTHONPATH=/usr/local/rdkit/lib/python3.7/site-packages:$PYTHONPATH
+USER askcos
+
+ENV PATH=/opt/conda/bin:${PATH}
