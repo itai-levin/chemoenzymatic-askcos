@@ -21,4 +21,5 @@ RUN sed -i 's/latin1/utf-8/g' /opt/conda/lib/python3.7/site-packages/rdkit/Chem/
 
 USER askcos
 
-ENV PATH=/opt/conda/bin:${PATH}
+ENV PATH=/opt/conda/bin${PATH:+:${PATH}}
+ENV PYTHONPATH=/opt/conda/share/RDKit/Contrib${PYTHONPATH:+:${PYTHONPATH}}
