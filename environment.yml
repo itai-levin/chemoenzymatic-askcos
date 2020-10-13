@@ -1,6 +1,7 @@
 name: base
 channels:
   - conda-forge
+  - ljn917
   - defaults
 dependencies:
   - python=3.7.8
@@ -11,7 +12,7 @@ dependencies:
   - django-extensions=2.2.9
   - djangorestframework=3.11.1
   - fonts-conda-forge=1
-  - gevent=1.4.0
+  - gevent=20.9.0
   - h5py=2.10.0
   - hdbscan=0.8.23
   - keras=2.2.4
@@ -26,16 +27,16 @@ dependencies:
   - pycairo=1.19.1
   - pymongo=3.10.1
   - pyyaml=5.3.1
-  - rdkit=2020.03.4
+  - rdchiral_cpp=1.0.1
+  - rdkit=2020.03.6
   - redis-py=3.5.3
   - scipy=1.5.2
   - scikit-learn=0.23.1
   - tensorflow=2.0.0
   - tensorflow-estimator=2.0.0
   - tqdm=4.48.2
-  - uwsgi=2.0.18
+  - uwsgi=2.0.18=py37h427a7ac_4
   - cairosvg=2.4.2
   - pip:
       - django-registration==3.0.1
       - drf-jwt==1.14.0
-      - rdchiral==1.0.0
