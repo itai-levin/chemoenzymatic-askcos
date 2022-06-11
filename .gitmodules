@@ -1,0 +1,9 @@
+[submodule "askcos-core"]
+	path = askcos-core
+	url = https://github.com/itai-levin/askcos-core.git
+[submodule "askcos-deploy"]
+	path = askcos-deploy
+	url = https://github.com/itai-levin/askcos-deploy.git
+[submodule "askcos-site"]
+	path = askcos-site
+	url = https://github.com/itai-levin/askcos-site.git
