@@ -9,7 +9,7 @@
 
 Base repository for all of the code that runs a modified version of ASKCOS that enables hybrid synthesis planning.
 
-#Install
+# Install
 To install and deploy an instance of this version of ASKCOS that can be accessed through the GUI or API calls:
 1. Clone this repository and all of its submodules using `git clone --recurse-submodules https://github.com/itai-levin/chemoenzymatic-askcos.git`
 2. From the base folder call `bash deploy.sh`. This script:
@@ -18,7 +18,7 @@ To install and deploy an instance of this version of ASKCOS that can be accessed
 * Builds Docker images from for the `askcos-core` and `askcos-site` and pulls data from `askcos-data`
 3. Access the GUI through the IP address of your server
 
-#Quick start using Google Cloud Platform
+# Quick start using Google Cloud Platform
 
 ```
 # (0) Create a Google Cloud instance
