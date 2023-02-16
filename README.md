@@ -9,6 +9,10 @@
 
 Base repository for all of the code that runs a modified version of ASKCOS that enables hybrid synthesis planning.
 
+This version of ASKCOS was used for the work described in the manuscript ["Merging enzymatic and synthetic chemistry with computational synthesis planning"](https://www.nature.com/articles/s41467-022-35422-y)
+
+The code for reproducing the results and figures from the paper are available [here](https://github.com/itai-levin/hybmind)
+
 # Install
 To install and deploy an instance of this version of ASKCOS that can be accessed through the GUI or API calls:
 1. Clone this repository and all of its submodules using `git clone --recurse-submodules https://github.com/itai-levin/chemoenzymatic-askcos.git`
